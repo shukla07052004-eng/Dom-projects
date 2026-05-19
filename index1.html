@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color manipulation</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Choose color for backgrond-color</h1>
+    <div class="color">
+        <Div class="box">Red</Div>
+        <Div class="box">Blue</Div>
+        <Div class="box">Green</Div>
+        <Div class="box">Yellow</Div>
+
+    </div>
+
+</body>
+<script>
+    let colors = document.querySelector('.color');
+    colors.style.display = "flex";
+    colors.style.justifyContent = "center";
+    colors.style.alignItems = "center";
+    
+    let firstchild = document.querySelectorAll('.box');
+    function changeColor(firstchild) {
+        firstchild.style.border = "2px solid black";
+        firstchild.style.width = "100px";
+        firstchild.style.height = "100px";
+        firstchild.style.display = "flex";
+        firstchild.style.justifyContent = "center";
+        firstchild.style.alignItems = "center";
+        if(firstchild.textContent === "Red") {
+            firstchild.style.backgroundColor = "red";
+        } else if(firstchild.textContent === "Blue") {
+            firstchild.style.backgroundColor = "blue";
+        } else if(firstchild.textContent === "Green") {
+            firstchild.style.backgroundColor = "green";
+        } else if(firstchild.textContent === "Yellow") {
+            firstchild.style.backgroundColor = "yellow";
+        }
+        
+    }
+    changeColor(firstchild[0]);
+    changeColor(firstchild[1]);
+    changeColor(firstchild[2]);
+    changeColor(firstchild[3]);
+
+    
+    firstchild.forEach(function(box) {
+        box.addEventListener('click', function(e) {
+            console.log(e);
+            console.log(e.target);
+            if(firstchild[0] === e.target) {
+                document.body.style.backgroundColor = "red";
+            } else if(firstchild[1] === e.target) {
+                document.body.style.backgroundColor = "blue";
+            } else if(firstchild[2] === e.target) {
+                document.body.style.backgroundColor = "green";
+            } else if(firstchild[3] === e.target) {
+                document.body.style.backgroundColor = "yellow";
+            }    
+        });
+    });
+
+</script>
+
+</html>
