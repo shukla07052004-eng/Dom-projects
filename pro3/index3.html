@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid black;
+            margin: auto;
+            width: 35%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form class="container">
+        <p>guess a number between 1 and 100 you have 10 attempts to guess a right number</p>
+        <h1>Guessing Game</h1><span>Accurate to system generated number</span>
+        <label for="guess">guess</label>
+        <input type="number" id="guess" placeholder="Guess a number">
+
+        <button>Submit Guess</button>
+        <p id="Attempts"></p>
+        <p id="result"></p>
+    </form>
+    <script>
+        let form = document.querySelector(".container");
+        const guesscomputer = parseInt((Math.random() * 100) + 1);
+        let count = 0;
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const guessuser = parseInt(document.getElementById("guess").value);
+            const Attempts = document.getElementById("Attempts");
+            const result = document.getElementById("result");
+            count++;
+
+            if (guessuser > guesscomputer) {
+                result.textContent = `try something less`
+                Attempts.textContent = `wrong attempt ${count} time`
+            }
+            else if (guessuser < guesscomputer) {
+                result.textContent = `try something higher`
+                Attempts.textContent = `wrong attempt ${count} time`
+            } else{
+                result.textContent = `guess matched correct answer is${guesscomputer}`
+                Attempts.textContent = `you took ${count} attempts`
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>;
